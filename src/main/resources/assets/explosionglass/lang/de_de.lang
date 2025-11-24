@@ -1,0 +1,8 @@
+explosionglass.installed_for_more=ExplosionGlass installiert, Für weitere Informationen:
+explosionglass.click=Klicken
+config.explosionglass.enabled=ExplosionGlass aktivieren oder deaktivieren
+config.explosionglass.glassBreakRadius=Radius für Glasbruch
+config.explosionglass.glassBlacklist=Blöcke, die durch Explosionen NICHT zerstört werden sollen
+config.explosionglass.useLineOfSight=Linien-der-Sicht-Prüfung für Glas aktivieren
+config.explosionglass.glassDrops=Glas lässt Items fallen, wenn es zerstört wird
+

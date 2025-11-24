@@ -1,0 +1,7 @@
+explosionglass.installed_for_more=ExplosionGlass installed, For more info:
+explosionglass.click=Click
+config.explosionglass.enabled=Enable or disable ExplosionGlass
+config.explosionglass.glassBreakRadius=Radius for breaking glass blocks
+config.explosionglass.glassBlacklist=Blocks that should NOT be broken by explosions (e.g., 'modid:block_name')
+config.explosionglass.useLineOfSight=Enable Line of Sight check for glass
+config.explosionglass.glassDrops=Glass drops items when broken

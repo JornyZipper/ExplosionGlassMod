@@ -1,0 +1,7 @@
+explosionglass.installed_for_more=ExplosionGlass встановлено, Для додаткової інформації:
+explosionglass.click=Клікніть
+config.explosionglass.enabled=Увімкнути або вимкнути ExplosionGlass
+config.explosionglass.glassBreakRadius=Радіус руйнування скла
+config.explosionglass.glassBlacklist=Блоки, які не повинні руйнуватися вибухами
+config.explosionglass.useLineOfSight=Включити перевірку прямої видимості для скла
+config.explosionglass.glassDrops=Скло випадає предмети при руйнуванні
