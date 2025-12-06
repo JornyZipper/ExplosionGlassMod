@@ -13,7 +13,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '1.8'
+version = '1.9.2' // Version of your mod, for example: 1.0.0
 group = 'com.coders.explosion' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'Explosion-Glass'
 

@@ -3,7 +3,7 @@
     "modid": "explosionglass",
     "name": "ExplosionGlass",
     "description": "Makes glass blocks break realistically with configurable radius and line-of-sight options.",
-    "version": "1.8",
+    "version": "1.9.2",
     "mcversion": "1.12.2",
     "authorList": ["Z1pperJ"],
     "credits": "curseforge-https://www.curseforge.com/minecraft/mc-mods/explosionglass.",
