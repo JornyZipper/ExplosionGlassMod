@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 
 public class VersionCheckerMod {
 
-    private static final String CURRENT_VERSION = "1.9.2";
+    private static final String CURRENT_VERSION = "1.9.5";
     private static final String CURSEFORGE_LINK = "https://www.curseforge.com/minecraft/mc-mods/explosionglass";
 
     @SubscribeEvent
@@ -20,7 +20,7 @@ public class VersionCheckerMod {
         EntityPlayerMP player = (EntityPlayerMP) event.player;
 
         // Основное сообщение
-        TextComponentString message = new TextComponentString(TextFormatting.DARK_GREEN + "ExplosionGlass 1.9.2 "
+        TextComponentString message = new TextComponentString(TextFormatting.DARK_GREEN + "ExplosionGlass 1.9.5 "
                 + TextFormatting.WHITE + "installed. For more info: ");
 
         // Click here с кликом

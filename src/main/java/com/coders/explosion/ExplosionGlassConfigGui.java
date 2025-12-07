@@ -115,12 +115,12 @@ public class ExplosionGlassConfigGui extends GuiScreen {
         this.drawString(this.fontRenderer, net.minecraft.client.resources.I18n.format("gui.explosionglass.scroll"), 30, this.height - 50, 0xAAAAAA);
         
         // Draw labels for numeric fields with adjusted Y positions - ONLY 2 FIELDS
-        this.drawString(this.fontRenderer, net.minecraft.client.resources.I18n.format("config.explosionglass.glassBreakRadius") + ":", 50, 150 - scrollOffset, 0xFFFFFF);
-        this.drawString(this.fontRenderer, net.minecraft.client.resources.I18n.format("config.explosionglass.glassBreakRadiusWithLoS") + ":", 210, 150 - scrollOffset, 0xFFFFFF);
+        drawWrappedText(50, 145 - scrollOffset, 130, net.minecraft.client.resources.I18n.format("config.explosionglass.glassBreakRadius") + ":", 0xFFFFFF);
+        drawWrappedText(210, 145 - scrollOffset, 130, net.minecraft.client.resources.I18n.format("config.explosionglass.glassBreakRadiusWithLoS") + ":", 0xFFFFFF);
         
         // Draw hidden labels for other fields
-        this.drawString(this.fontRenderer, net.minecraft.client.resources.I18n.format("config.explosionglass.glassDropChance") + ":", 50, 200 - scrollOffset, 0xAAAAAA);
-        this.drawString(this.fontRenderer, net.minecraft.client.resources.I18n.format("config.explosionglass.loSIgnoreDistance") + ":", 210, 200 - scrollOffset, 0xAAAAAA);
+        drawWrappedText(50, 195 - scrollOffset, 130, net.minecraft.client.resources.I18n.format("config.explosionglass.glassDropChance") + ":", 0xAAAAAA);
+        drawWrappedText(210, 195 - scrollOffset, 130, net.minecraft.client.resources.I18n.format("config.explosionglass.loSIgnoreDistance") + ":", 0xAAAAAA);
         
         // Draw text fields - ONLY 2 VISIBLE
         if (radiusField.y > 40 && radiusField.y < this.height - 50) radiusField.drawTextBox();
@@ -131,6 +131,30 @@ public class ExplosionGlassConfigGui extends GuiScreen {
         if (losIgnoreField.y > 40 && losIgnoreField.y < this.height - 50) losIgnoreField.drawTextBox();
         
         super.drawScreen(mouseX, mouseY, partialTicks);
+    }
+    
+    // Метод для рисования текста с переносом строк
+    private void drawWrappedText(int x, int y, int maxWidth, String text, int color) {
+        String[] words = text.split(" ");
+        String line = "";
+        int currentY = y;
+        
+        for (String word : words) {
+            String testLine = line.isEmpty() ? word : line + " " + word;
+            if (this.fontRenderer.getStringWidth(testLine) <= maxWidth) {
+                line = testLine;
+            } else {
+                if (!line.isEmpty()) {
+                    this.drawString(this.fontRenderer, line, x, currentY, color);
+                    currentY += 10;
+                }
+                line = word;
+            }
+        }
+        
+        if (!line.isEmpty()) {
+            this.drawString(this.fontRenderer, line, x, currentY, color);
+        }
     }
     
     @Override
