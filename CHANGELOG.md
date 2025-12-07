@@ -28,6 +28,21 @@
 - Solid materials (stone, dirt, wood) properly block line of sight
 - LoS ignore distance controls the zone where visibility is not checked
 
+## [1.9.5] - 2025-12-07
+
+### Fixed
+- Localization: shortened long English/German strings to fit config GUI.
+- Reverted earlier Russian/Ukrainian edits per user request (kept original RU/UK phrasing).
+- Corrected minor typos and UI text that could overlap buttons in the config screen.
+
+### Files changed
+- `src/main/resources/assets/explosionglass/lang/en_us.lang` (shortened labels)
+- `src/main/resources/assets/explosionglass/lang/de_de.lang` (shortened labels)
+- `src/main/resources/assets/explosionglass/lang/ru_ru.lang` (reverted undo)
+- `src/main/resources/assets/explosionglass/lang/uk_ua.lang` (reverted undo)
+- `src/main/java/com/coders/explosion/ExplosionGlassConfigGui.java` (layout/text adjustments)
+
+
 ## [1.9] - Previous Release
 - Initial mod release with basic glass breaking functionality
 
