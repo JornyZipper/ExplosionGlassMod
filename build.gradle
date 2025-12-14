@@ -13,9 +13,9 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '1.9.5' // Version of your mod, for example: 1.0.0
+version = '1.9.6' // Version of your mod, for example: 1.0.0
 group = 'com.coders.explosion' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'Explosion-Glass'
+archivesBaseName = 'EXPGlass'
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
 

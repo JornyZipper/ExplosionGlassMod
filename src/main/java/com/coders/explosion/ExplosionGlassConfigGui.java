@@ -11,6 +11,7 @@ public class ExplosionGlassConfigGui extends GuiScreen {
     private GuiScreen parent;
     private GuiButton doneButton;
     private GuiButton cancelButton;
+    private GuiButton resetButton;
     
     private GuiButton enabledToggle;
     private GuiButton glassDropsToggle;
@@ -66,8 +67,11 @@ public class ExplosionGlassConfigGui extends GuiScreen {
         // Add Done/Cancel buttons
         this.doneButton = new GuiButton(200, 50, this.height - 30, 145, 20, net.minecraft.client.resources.I18n.format("gui.explosionglass.done"));
         this.cancelButton = new GuiButton(201, 205, this.height - 30, 145, 20, net.minecraft.client.resources.I18n.format("gui.explosionglass.cancel"));
+        // Place reset button a bit closer to the right edge (smaller margin)
+        this.resetButton = new GuiButton(202, this.width - 10 - 100, this.height - 30, 100, 20, net.minecraft.client.resources.I18n.format("gui.explosionglass.reset"));
         this.buttonList.add(doneButton);
         this.buttonList.add(cancelButton);
+        this.buttonList.add(resetButton);
     }
     
     @Override
@@ -105,6 +109,41 @@ public class ExplosionGlassConfigGui extends GuiScreen {
         } else if (button.id == 201) {
             // Cancel - discard changes
             this.mc.displayGuiScreen(parent);
+        } else if (button.id == 202) {
+            // Reset to defaults
+            ExplosionGlassMod.Mod = true;
+            ExplosionGlassMod.glassBreakRadius = 20;
+            ExplosionGlassMod.glassBreakRadiusWithLoS = 10;
+            ExplosionGlassMod.glassBlacklist = new String[0];
+            ExplosionGlassMod.glassWhitelist = new String[0];
+            ExplosionGlassMod.useLineOfSight = true;
+            ExplosionGlassMod.glassDrops = false;
+            ExplosionGlassMod.glassDropChance = 1.0;
+            ExplosionGlassMod.loSIgnoreDistance = 10.0;
+
+            // Update GUI controls
+            enabledToggle.displayString = net.minecraft.client.resources.I18n.format("config.explosionglass.enabled") + ": " + (ExplosionGlassMod.Mod ? "ON" : "OFF");
+            glassDropsToggle.displayString = net.minecraft.client.resources.I18n.format("config.explosionglass.glassDrops") + ": " + (ExplosionGlassMod.glassDrops ? "ON" : "OFF");
+            losToggle.displayString = net.minecraft.client.resources.I18n.format("config.explosionglass.useLineOfSight") + ": " + (ExplosionGlassMod.useLineOfSight ? "ON" : "OFF");
+
+            radiusField.setText(String.valueOf(ExplosionGlassMod.glassBreakRadius));
+            radiusWithLosField.setText(String.valueOf(ExplosionGlassMod.glassBreakRadiusWithLoS));
+            dropChanceField.setText(String.valueOf(ExplosionGlassMod.glassDropChance));
+            losIgnoreField.setText(String.valueOf(ExplosionGlassMod.loSIgnoreDistance));
+
+            // Persist defaults to config
+            if (ExplosionGlassMod.config != null) {
+                ExplosionGlassMod.config.get("general", "enabled", ExplosionGlassMod.Mod).set(String.valueOf(ExplosionGlassMod.Mod));
+                ExplosionGlassMod.config.get("general", "glassBreakRadius", ExplosionGlassMod.glassBreakRadius).set(String.valueOf(ExplosionGlassMod.glassBreakRadius));
+                ExplosionGlassMod.config.get("general", "glassBreakRadiusWithLoS", ExplosionGlassMod.glassBreakRadiusWithLoS).set(String.valueOf(ExplosionGlassMod.glassBreakRadiusWithLoS));
+                ExplosionGlassMod.config.get("general", "glassBlacklist", ExplosionGlassMod.glassBlacklist).set(ExplosionGlassMod.glassBlacklist);
+                ExplosionGlassMod.config.get("general", "glassWhitelist", ExplosionGlassMod.glassWhitelist).set(ExplosionGlassMod.glassWhitelist);
+                ExplosionGlassMod.config.get("general", "useLineOfSight", ExplosionGlassMod.useLineOfSight).set(String.valueOf(ExplosionGlassMod.useLineOfSight));
+                ExplosionGlassMod.config.get("general", "glassDrops", ExplosionGlassMod.glassDrops).set(String.valueOf(ExplosionGlassMod.glassDrops));
+                ExplosionGlassMod.config.get("general", "glassDropChance", ExplosionGlassMod.glassDropChance).set(String.valueOf(ExplosionGlassMod.glassDropChance));
+                ExplosionGlassMod.config.get("general", "loSIgnoreDistance", ExplosionGlassMod.loSIgnoreDistance).set(String.valueOf(ExplosionGlassMod.loSIgnoreDistance));
+                ExplosionGlassMod.config.save();
+            }
         }
     }
     

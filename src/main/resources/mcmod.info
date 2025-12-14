@@ -1,15 +1,15 @@
 [
   {
-    "modid": "explosionglass",
-    "name": "ExplosionGlass",
+    "modid": "expglass",
+    "name": "EXPlosionGlass",
     "description": "Makes glass blocks break realistically with configurable radius and line-of-sight options.",
-    "version": "1.9.5",
+    "version": "1.9.6",
     "mcversion": "1.12.2",
     "authorList": ["Z1pperJ"],
-    "credits": "curseforge-https://www.curseforge.com/minecraft/mc-mods/explosionglass.",
+    "credits": "modrinth-https://modrinth.com/user/r3R29khZ.",
     "guiFactory": "com.coders.explosion.ConfigGuiFactory",
     "logoFile": "logo.png",
-    "url": "",
+    "url": "curseforge-https://www.curseforge.com/members/z1pperj.",
     "updateUrl": "",
     "screenshots": [],
     "dependencies": []

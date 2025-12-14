@@ -42,6 +42,18 @@
 - `src/main/resources/assets/explosionglass/lang/uk_ua.lang` (reverted undo)
 - `src/main/java/com/coders/explosion/ExplosionGlassConfigGui.java` (layout/text adjustments)
 
+## [1.9.6] - 2025-12-14
+
+### Added
+- Scale glass-break radii by explosion strength: stronger explosions now affect a larger radius.
+
+### Files changed
+- `src/main/java/com/coders/explosion/ExplosionEventHandler.java` (scale radii by explosion size)
+
+### Fixed
+- When LoS is disabled, the effect now applies in full 3D (above/below/sides) — vertical bounds match radius.
+
+
 
 ## [1.9] - Previous Release
 - Initial mod release with basic glass breaking functionality

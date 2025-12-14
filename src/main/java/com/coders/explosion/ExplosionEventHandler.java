@@ -24,13 +24,39 @@ public class ExplosionEventHandler {
         World world = event.getWorld();
         Vec3d explosionPos = event.getExplosion().getPosition();
 
+        // Scale radii by explosion strength: stronger explosions expand effect
         int radiusNoLoS = ExplosionGlassMod.glassBreakRadius;
         int radiusLoS = ExplosionGlassMod.glassBreakRadiusWithLoS;
+
+        // Try to read explosion size (Minecraft Explosion has a 'size' field in 1.12.2)
+        float explosionSize = 0f;
+        try {
+            java.lang.reflect.Field sizeField = event.getExplosion().getClass().getDeclaredField("size");
+            sizeField.setAccessible(true);
+            explosionSize = sizeField.getFloat(event.getExplosion());
+        } catch (Exception e) {
+            // Fallback: try common field name 'explosionSize' or leave as 0
+            try {
+                java.lang.reflect.Field sizeField = event.getExplosion().getClass().getDeclaredField("explosionSize");
+                sizeField.setAccessible(true);
+                explosionSize = sizeField.getFloat(event.getExplosion());
+            } catch (Exception ignored) {
+            }
+        }
+
+        // If we found a meaningful explosion size, scale radii relative to typical TNT (~4.0f)
+        if (explosionSize > 0f) {
+            float scale = Math.max(1.0f, explosionSize / 4.0f);
+            radiusNoLoS = (int) Math.ceil(radiusNoLoS * scale);
+            radiusLoS = (int) Math.ceil(radiusLoS * scale);
+        }
         double ignoreDistance = ExplosionGlassMod.loSIgnoreDistance;
 
+        // Use full 3D bounding box based on computed radii so vertical range matches horizontal
+        int verticalRange = Math.max(radiusNoLoS, radiusLoS);
         for (BlockPos pos : BlockPos.getAllInBox(
-                new BlockPos(explosionPos).add(-radiusNoLoS, -2, -radiusNoLoS),
-                new BlockPos(explosionPos).add(radiusNoLoS, 5, radiusNoLoS))) {
+            new BlockPos(explosionPos).add(-radiusNoLoS, -verticalRange, -radiusNoLoS),
+            new BlockPos(explosionPos).add(radiusNoLoS, verticalRange, radiusNoLoS))) {
 
             IBlockState state = world.getBlockState(pos);
             Material material = state.getMaterial();
