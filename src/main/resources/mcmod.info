@@ -1,9 +1,9 @@
 [
   {
-    "modid": "expglass",
+    "modid": "explglass",
     "name": "EXPlosionGlass",
     "description": "Makes glass blocks break realistically with configurable radius and line-of-sight options.",
-    "version": "1.9.6",
+    "version": "2.0",
     "mcversion": "1.12.2",
     "authorList": ["Z1pperJ"],
     "credits": "modrinth-https://modrinth.com/user/r3R29khZ.",
