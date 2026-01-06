@@ -1,5 +1,22 @@
 # ExplosionGlass Changelog
 
+## [2.0] - 2026-01-06
+
+### Added
+- Mandatory dependency on core mod `bwr_core` (`required-after`).
+- Reflective registration of `ExplosionGlassInstrumentation` in BRCore during `preInit` when `bwr_core` is present.
+- Placeholder instrumentation class `ExplosionGlassInstrumentation` (for BRCore integration).
+- Translations added: French, Polish, Italian, Dutch, Turkish, Arabic.
+
+### Changed
+- Removed internal `ExplosionCore` implementation; integrate with external core when available.
+- Updated mod version to `2.0` and packaging/cleanup for release.
+
+### Files changed
+- `src/main/java/com/coders/explosion/ExplosionGlassMod.java` (BRCore integration, dependency)
+- `src/main/java/com/coders/explosion/instrumentation/ExplosionGlassInstrumentation.java` (new)
+- `src/main/resources/assets/explosionglass/lang/*` (new translations)
+
 ## [1.9.2] - 2025-12-06
 
 ### Added
