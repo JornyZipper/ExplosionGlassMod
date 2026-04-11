@@ -1,0 +1,25 @@
+explosionglass.installed_for_more=ExplosionGlass instalado, Para más información:
+explosionglass.click=Haz clic
+config.explosionglass.enabled=Habilitado
+config.explosionglass.glassBreakRadius=Radio de ruptura
+config.explosionglass.glassBreakRadiusWithLoS=Radio de LoS
+config.explosionglass.glassBlacklist=Bloques que NO deben romperse cuando exploran
+config.explosionglass.glassWhitelist=Bloques que SIEMPRE se rompen independientemente del radio o LoS
+config.explosionglass.useLineOfSight=Usar verificación de LoS
+config.explosionglass.glassDrops=Soltar elementos
+config.explosionglass.glassDropChance=Probabilidad de caída (0.0 - 1.0)
+config.explosionglass.loSIgnoreDistance=Distancia de ignorancia de LoS (bloques)
+gui.explosionglass.editblacklist=Editar Lista Negra
+gui.explosionglass.editwhitelist=Editar Lista Blanca
+gui.explosionglass.add=Agregar
+gui.explosionglass.removeselected=Remover
+gui.explosionglass.done=Hecho
+gui.explosionglass.cancel=Atrás
+gui.explosionglass.blockname=ID:
+gui.explosionglass.itemsinlist=Lista:
+gui.explosionglass.editor=Editor
+gui.explosionglass.scroll=Desplazamiento: Rueda del ratón
+gui.explosionglass.reset=Restablecer valores predeterminados
+item.glass_shard.name=Fragmento de vidrio
+
+item.glass_shard.name=Glass Shard

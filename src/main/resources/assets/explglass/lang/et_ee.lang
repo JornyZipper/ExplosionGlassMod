@@ -1,0 +1,24 @@
+explosionglass.installed_for_more=ExplosionGlass on paigaldatud, Lisateabe saamiseks:
+explosionglass.click=Klõpsa
+config.explosionglass.enabled=Lubatud
+config.explosionglass.glassBreakRadius=Murdumisraadius
+config.explosionglass.glassBreakRadiusWithLoS=LoS raadius
+config.explosionglass.glassBlacklist=Plokid, mis EI tohiks plahvatamisel katki minna
+config.explosionglass.glassWhitelist=Plokid, mis ALATI lähevad katki sõltumata raadiusest või LoS-ist
+config.explosionglass.useLineOfSight=Kasuta LoS kontrolli
+config.explosionglass.glassDrops=Langenud esemed
+config.explosionglass.glassDropChance=Langemise võimalus (0.0 - 1.0)
+config.explosionglass.loSIgnoreDistance=LoS jätab vahele kauguse (plokkid)
+gui.explosionglass.editblacklist=Must nimekiri
+gui.explosionglass.editwhitelist=Valge nimekiri
+gui.explosionglass.add=Lisa
+gui.explosionglass.removeselected=Eemalda
+gui.explosionglass.done=Valmis
+gui.explosionglass.cancel=Tagasi
+gui.explosionglass.blockname=ID:
+gui.explosionglass.itemsinlist=Nimekiri:
+gui.explosionglass.editor=Toimetaja
+gui.explosionglass.scroll=Kerimine: Hiire ratas
+gui.explosionglass.reset=Vaikimisi sätete taastamine
+
+item.glass_shard.name=Glass Shard

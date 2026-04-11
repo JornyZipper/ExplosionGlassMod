@@ -1,29 +1,37 @@
 package com.coders.explosion;
 
 import net.minecraft.init.Blocks;
-import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import org.apache.logging.log4j.Logger;
+import net.minecraftforge.common.MinecraftForge;
 
 import java.io.File;
 
 @Mod(
         modid = ExplosionGlassMod.MODID,
         name = ExplosionGlassMod.NAME,
-        version = ExplosionGlassMod.VERSION,
-        dependencies = "required-after:bwr_core",
-        acceptableRemoteVersions = "*",
+        version = "2.1",
+        dependencies = "required-after:bwr_core@[0.3.0,)",
         guiFactory = "com.coders.explosion.ConfigGuiFactory"
 )
 public class ExplosionGlassMod {
+
+        @SidedProxy(
+                clientSide = "com.coders.explosion.ClientProxy",
+                serverSide = "com.coders.explosion.CommonProxy"
+        )
+        public static CommonProxy proxy;
+  
     public static final String MODID = "explglass";
     public static final String NAME = "EXPLGlass";
-        public static final String VERSION = "2.0";
+        public static final String VERSION = "2.1";
 
     public static Configuration config;
 
@@ -35,16 +43,20 @@ public class ExplosionGlassMod {
     public static boolean useLineOfSight;
     public static boolean glassDrops;
     public static double glassDropChance;       // 0.0 - 1.0
-    public static double loSIgnoreDistance;     // блоков игнорировать при LoS
+    public static double loSIgnoreDistance;
+     // блоков игнорировать при LoS
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        File configFile = event.getSuggestedConfigurationFile();
-        config = new Configuration(configFile);
+        GlassSoundBlocker.setupCustomGlassSounds();
+        System.out.println("[ExplosionGlass] PRE-INIT: Custom glass & ice sounds applied!");
+        config = new Configuration(new File(event.getModConfigurationDirectory(), "explosionglass.cfg"));
         loadConfig();
+        MinecraftForge.EVENT_BUS.register(this);
                 // If the external core mod `bwr_core` is present, try to register our instrumentation.
                 try {
                         if (net.minecraftforge.fml.common.Loader.isModLoaded("bwr_core")) {
+                                System.out.println("[ExplosionGlass] PRE-INIT: BWR-Core found!");
                                 // Try several possible BRCore class names reflectively
                                 String[] candidates = new String[]{
                                         "bwr.core.BRCore",
@@ -93,14 +105,29 @@ public class ExplosionGlassMod {
                         }
                 } catch (Throwable t) {
                         System.out.println("ExplosionGlass: error while attempting BRCore integration: " + t.getMessage());
-                }
+                 }
     }
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
+                System.out.println("[ExplosionGlass] INIT: Registering event handlers...");
                 MinecraftForge.EVENT_BUS.register(new ExplosionEventHandler());
+                MinecraftForge.EVENT_BUS.register(new ChainTNTHandler());
                 MinecraftForge.EVENT_BUS.register(new VersionCheckerMod());
                 MinecraftForge.EVENT_BUS.register(this);
+                System.out.println("[ExplosionGlass] INIT: Event handlers registered!");
+                System.out.println("[ExplosionGlass] INIT: Mod enabled = " + Mod);
+                System.out.println("[ExplosionGlass] INIT: Glass break radius = " + glassBreakRadius);
+
+                proxy.registerRenderers();
+
+                // Register client proxy for sound events
+                if (proxy instanceof ClientProxy) {
+                    MinecraftForge.EVENT_BUS.register(proxy);
+                }
+
+                // Setup custom sounds for glass and ice
+                GlassSoundBlocker.setupCustomGlassSounds();
     }
 
     public static void loadConfig() {

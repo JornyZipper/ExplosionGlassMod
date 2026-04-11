@@ -1,0 +1,24 @@
+explosionglass.installed_for_more=ExplosionGlass je nameščen, Za več informacij:
+explosionglass.click=Klik
+config.explosionglass.enabled=Omogočeno
+config.explosionglass.glassBreakRadius=Polmer preloma
+config.explosionglass.glassBreakRadiusWithLoS=Polmer LoS
+config.explosionglass.glassBlacklist=Bloki, ki se NE smejo zlomiti pri eksploziji
+config.explosionglass.glassWhitelist=Bloki, ki se VEDNO zlomijo ne glede na polmer ali LoS
+config.explosionglass.useLineOfSight=Uporabi LoS preverjanje
+config.explosionglass.glassDrops=Padajoči predmeti
+config.explosionglass.glassDropChance=Verjetnost padca (0.0 - 1.0)
+config.explosionglass.loSIgnoreDistance=Razdalja preziranja LoS (bloki)
+gui.explosionglass.editblacklist=Črna lista
+gui.explosionglass.editwhitelist=Bela lista
+gui.explosionglass.add=Dodaj
+gui.explosionglass.removeselected=Odstrani
+gui.explosionglass.done=Opravljeno
+gui.explosionglass.cancel=Nazaj
+gui.explosionglass.blockname=ID:
+gui.explosionglass.itemsinlist=Seznam:
+gui.explosionglass.editor=Urejevalnik
+gui.explosionglass.scroll=Naprej: Kolešček miške
+gui.explosionglass.reset=Ponastavite privzete nastavitve
+
+item.glass_shard.name=Glass Shard

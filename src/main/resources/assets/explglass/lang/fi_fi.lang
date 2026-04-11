@@ -1,0 +1,24 @@
+explosionglass.installed_for_more=ExplosionGlass on asennettu, Lisätietoja:
+explosionglass.click=Napsauta
+config.explosionglass.enabled=Käytössä
+config.explosionglass.glassBreakRadius=Murtosäde
+config.explosionglass.glassBreakRadiusWithLoS=LoS-säde
+config.explosionglass.glassBlacklist=Lohkot, joita EI pitäisi rikkoutua räjähdyksen yhteydessä
+config.explosionglass.glassWhitelist=Lohkot, jotka AINA hajoavat säteestä tai LoS:sta riippumatta
+config.explosionglass.useLineOfSight=Käytä LoS-tarkistusta
+config.explosionglass.glassDrops=Pudota Kohteet
+config.explosionglass.glassDropChance=Putoamisen mahdollisuus (0.0 - 1.0)
+config.explosionglass.loSIgnoreDistance=LoS jätetään huomiotta etäisyys (lohkot)
+gui.explosionglass.editblacklist=Musta lista
+gui.explosionglass.editwhitelist=Valkoinen lista
+gui.explosionglass.add=Lisää
+gui.explosionglass.removeselected=Poista
+gui.explosionglass.done=Valmis
+gui.explosionglass.cancel=Takaisin
+gui.explosionglass.blockname=ID:
+gui.explosionglass.itemsinlist=Lista:
+gui.explosionglass.editor=Toimittaja
+gui.explosionglass.scroll=Vieritys: Hiiren pyörä
+gui.explosionglass.reset=Palauta oletusarvot
+
+item.glass_shard.name=Glass Shard

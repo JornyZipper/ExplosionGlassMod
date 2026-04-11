@@ -1,0 +1,24 @@
+explosionglass.installed_for_more=ExplosionGlass huwa installat, Għal aktar informazzjoni:
+explosionglass.click=Ikklicka
+config.explosionglass.enabled=Ippermetti
+config.explosionglass.glassBreakRadius=Raġġ tal-Qsim
+config.explosionglass.glassBreakRadiusWithLoS=Raġġ ta' LoS
+config.explosionglass.glassBlacklist=Blokki li GĦANDHOM JINTGĦAGĦTU meta jilħqu
+config.explosionglass.glassWhitelist=Blokki li DEJJEM JINTGĦAGĦTU irrispettivament mill-Raġġ jew LoS
+config.explosionglass.useLineOfSight=Uża Chekk LoS
+config.explosionglass.glassDrops=Drappat Oġġetti
+config.explosionglass.glassDropChance=Ċansa ta' Drop (0.0 - 1.0)
+config.explosionglass.loSIgnoreDistance=LoS Distanza ta' Ħmira (Blokki)
+gui.explosionglass.editblacklist= Lista Sewda
+gui.explosionglass.editwhitelist= Lista Bajda
+gui.explosionglass.add=Żid
+gui.explosionglass.removeselected=Neħħi
+gui.explosionglass.done=Issikka
+gui.explosionglass.cancel=Lura
+gui.explosionglass.blockname=ID:
+gui.explosionglass.itemsinlist= Lista:
+gui.explosionglass.editor=Editur
+gui.explosionglass.scroll=Scroll: Rota tal-Maws
+gui.explosionglass.reset=Irrisettja Defaults
+
+item.glass_shard.name=Glass Shard

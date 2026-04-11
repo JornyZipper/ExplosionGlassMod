@@ -1,0 +1,24 @@
+explosionglass.installed_for_more=Az ExplosionGlass telepítve van, további információkért:
+explosionglass.click=Kattintson
+config.explosionglass.enabled=Engedélyezve
+config.explosionglass.glassBreakRadius=Törési sugár
+config.explosionglass.glassBreakRadiusWithLoS=LoS sugár
+config.explosionglass.glassBlacklist=Blokkok, amelyek NEM szabad, hogy megsérüljenek robbanás során
+config.explosionglass.glassWhitelist=Blokkok, amelyek MINDIG megsérülnek a sugár vagy LoS függetlenül
+config.explosionglass.useLineOfSight=Használjon LoS ellenőrzést
+config.explosionglass.glassDrops=Ejtett elemek
+config.explosionglass.glassDropChance=Ejtés esélye (0.0 - 1.0)
+config.explosionglass.loSIgnoreDistance=LoS figyelmen kívül hagyás távolsága (blokkok)
+gui.explosionglass.editblacklist=Fekete lista szerkesztése
+gui.explosionglass.editwhitelist=Fehér lista szerkesztése
+gui.explosionglass.add=Hozzáadás
+gui.explosionglass.removeselected=Eltávolítás
+gui.explosionglass.done=Kész
+gui.explosionglass.cancel=Vissza
+gui.explosionglass.blockname=ID:
+gui.explosionglass.itemsinlist=Lista:
+gui.explosionglass.editor=Szerkesztő
+gui.explosionglass.scroll=Görgetés: Egérgörgő
+gui.explosionglass.reset=Alapértelmezett beállítások visszaállítása
+
+item.glass_shard.name=Glass Shard

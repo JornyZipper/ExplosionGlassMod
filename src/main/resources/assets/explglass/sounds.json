@@ -1,0 +1,206 @@
+{
+  "glass_break1": {
+    "category": "block",
+    "sounds": [
+      {"name": "explglass:glass/glass_break1"}
+    ]
+  },
+  "glass_break2": {
+    "category": "block",
+    "sounds": [
+      {"name": "explglass:glass/glass_break2"}
+    ]
+  },
+  "glass_break3": {
+    "category": "block",
+    "sounds": [
+      {"name": "explglass:glass/glass_break3"}
+    ]
+  },
+  "glass_place1": {
+    "category": "block",
+    "sounds": [
+      {"name": "explglass:glass/glass_place1"}
+    ]
+  },
+  "glass_place2": {
+    "category": "block",
+    "sounds": [
+      {"name": "explglass:glass/glass_place2"}
+    ]
+  },
+  "glass_place3": {
+    "category": "block",
+    "sounds": [
+      {"name": "explglass:glass/glass_place3"}
+    ]
+  },
+  "glass_place4": {
+    "category": "block",
+    "sounds": [
+      {"name": "explglass:glass/glass_place4"}
+    ]
+  },
+  "glass_place5": {
+    "category": "block",
+    "sounds": [
+      {"name": "explglass:glass/glass_place5"}
+    ]
+  },
+  "glass_place6": {
+    "category": "block",
+    "sounds": [
+      {"name": "explglass:glass/glass_place6"}
+    ]
+  },
+  "glass_step1": {
+    "category": "block",
+    "sounds": [
+      {"name": "explglass:glass/glass_step1"}
+    ]
+  },
+  "glass_step2": {
+    "category": "block",
+    "sounds": [
+      {"name": "explglass:glass/glass_step2"}
+    ]
+  },
+  "glass_step3": {
+    "category": "block",
+    "sounds": [
+      {"name": "explglass:glass/glass_step3"}
+    ]
+  },
+  "glass_step4": {
+    "category": "block",
+    "sounds": [
+      {"name": "explglass:glass/glass_step4"}
+    ]
+  },
+  "glass_step5": {
+    "category": "block",
+    "sounds": [
+      {"name": "explglass:glass/glass_step5"}
+    ]
+  },
+  "glass_step6": {
+    "category": "block",
+    "sounds": [
+      {"name": "explglass:glass/glass_step6"}
+    ]
+  },
+  "glass_step7": {
+    "category": "block",
+    "sounds": [
+      {"name": "explglass:glass/glass_step7"}
+    ]
+  },
+  "glass_step8": {
+    "category": "block",
+    "sounds": [
+      {"name": "explglass:glass/glass_step8"}
+    ]
+  },
+  "glass_step9": {
+    "category": "block",
+    "sounds": [
+      {"name": "explglass:glass/glass_step9"}
+    ]
+  },
+  "glass_step10": {
+    "category": "block",
+    "sounds": [
+      {"name": "explglass:glass/glass_step10"}
+    ]
+  },
+  "glass_step11": {
+    "category": "block",
+    "sounds": [
+      {"name": "explglass:glass/glass_step11"}
+    ]
+  },
+  "ice_break1": {
+    "category": "block",
+    "sounds": [
+      {"name": "explglass:ice/ice_break1"}
+    ]
+  },
+  "ice_break2": {
+    "category": "block",
+    "sounds": [
+      {"name": "explglass:ice/ice_break2"}
+    ]
+  },
+  "ice_break3": {
+    "category": "block",
+    "sounds": [
+      {"name": "explglass:ice/ice_break3"}
+    ]
+  },
+  "ice_step1": {
+    "category": "block",
+    "sounds": [
+      {"name": "explglass:ice/ice_step1"}
+    ]
+  },
+  "ice_step2": {
+    "category": "block",
+    "sounds": [
+      {"name": "explglass:ice/ice_step2"}
+    ]
+  },
+  "ice_step3": {
+    "category": "block",
+    "sounds": [
+      {"name": "explglass:ice/ice_step3"}
+    ]
+  },
+  "ice_step4": {
+    "category": "block",
+    "sounds": [
+      {"name": "explglass:ice/ice_step4"}
+    ]
+  },
+  "ice_step5": {
+    "category": "block",
+    "sounds": [
+      {"name": "explglass:ice/ice_step5"}
+    ]
+  },
+  "ice_step6": {
+    "category": "block",
+    "sounds": [
+      {"name": "explglass:ice/ice_step6"}
+    ]
+  },
+  "ice_step7": {
+    "category": "block",
+    "sounds": [
+      {"name": "explglass:ice/ice_step7"}
+    ]
+  },
+  "ice_step8": {
+    "category": "block",
+    "sounds": [
+      {"name": "explglass:ice/ice_step8"}
+    ]
+  },
+  "ice_step9": {
+    "category": "block",
+    "sounds": [
+      {"name": "explglass:ice/ice_step9"}
+    ]
+  },
+  "ice_step10": {
+    "category": "block",
+    "sounds": [
+      {"name": "explglass:ice/ice_step10"}
+    ]
+  },
+  "ice_step11": {
+    "category": "block",
+    "sounds": [
+      {"name": "explglass:ice/ice_step11"}
+    ]
+  }
+}

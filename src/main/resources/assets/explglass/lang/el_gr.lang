@@ -1,0 +1,24 @@
+explosionglass.installed_for_more=Το ExplosionGlass είναι εγκατεστημένο, Για περισσότερες πληροφορίες:
+explosionglass.click=Κάνε κλικ
+config.explosionglass.enabled=Ενεργοποιημένο
+config.explosionglass.glassBreakRadius=Ακτίνα θραύσης
+config.explosionglass.glassBreakRadiusWithLoS=Ακτίνα LoS
+config.explosionglass.glassBlacklist=Μπλοκ που ΔΕΝ θα πρέπει να σπάσουν κατά την έκρηξη
+config.explosionglass.glassWhitelist=Μπλοκ που ΠΑΝΤΑ σπάνε ανεξάρτητα από ακτίνα ή LoS
+config.explosionglass.useLineOfSight=Χρήση ελέγχου LoS
+config.explosionglass.glassDrops=Αποθέστε στοιχεία
+config.explosionglass.glassDropChance=Πιθανότητα πτώσης (0.0 - 1.0)
+config.explosionglass.loSIgnoreDistance=Απόσταση αγνόησης LoS (μπλοκ)
+gui.explosionglass.editblacklist=Μαύρη λίστα
+gui.explosionglass.editwhitelist=Λευκή λίστα
+gui.explosionglass.add=Προσθήκη
+gui.explosionglass.removeselected=Αφαίρεση
+gui.explosionglass.done=Έγινε
+gui.explosionglass.cancel=Πίσω
+gui.explosionglass.blockname=ID:
+gui.explosionglass.itemsinlist=Λίστα:
+gui.explosionglass.editor=Επεξεργαστής
+gui.explosionglass.scroll=Κύλιση: Τροχός ποντικιού
+gui.explosionglass.reset=Επαναφορά προεπιλογών
+
+item.glass_shard.name=Glass Shard

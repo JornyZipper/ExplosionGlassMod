@@ -1,0 +1,24 @@
+explosionglass.installed_for_more=ExplosionGlass je nainštalovaný, Ďalšie informácie:
+explosionglass.click=Kliknite
+config.explosionglass.enabled=Povolené
+config.explosionglass.glassBreakRadius=Polomer zlomu
+config.explosionglass.glassBreakRadiusWithLoS=Polomer LoS
+config.explosionglass.glassBlacklist=Bloky, ktoré by sa počas výbuchu nemali zlomiť
+config.explosionglass.glassWhitelist=Bloky, ktoré sa VŽDY zlomia bez ohľadu na polomer alebo LoS
+config.explosionglass.useLineOfSight=Použiť kontrolu LoS
+config.explosionglass.glassDrops=Vrátené položky
+config.explosionglass.glassDropChance=Šanca na pád (0.0 - 1.0)
+config.explosionglass.loSIgnoreDistance=Vzdialenosť ignorovania LoS (bloky)
+gui.explosionglass.editblacklist=Čierna listina
+gui.explosionglass.editwhitelist=Biela listina
+gui.explosionglass.add=Pridať
+gui.explosionglass.removeselected=Odstrániť
+gui.explosionglass.done=Hotovo
+gui.explosionglass.cancel=Späť
+gui.explosionglass.blockname=ID:
+gui.explosionglass.itemsinlist=Zoznam:
+gui.explosionglass.editor=Editor
+gui.explosionglass.scroll=Posun: Koliesko myši
+gui.explosionglass.reset=Obnoviť predvolené nastavenia
+
+item.glass_shard.name=Glass Shard

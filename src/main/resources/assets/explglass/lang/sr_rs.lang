@@ -1,0 +1,24 @@
+explosionglass.installed_for_more=ExplosionGlass је инсталиран, За више информација:
+explosionglass.click=Клик
+config.explosionglass.enabled=Омогућено
+config.explosionglass.glassBreakRadius=Радијус прелома
+config.explosionglass.glassBreakRadiusWithLoS=Радијус LoS
+config.explosionglass.glassBlacklist=Блокови који НЕ би требало да се сломе при експлозији
+config.explosionglass.glassWhitelist=Блокови који се УВЕК сломе без обзира на радијус или LoS
+config.explosionglass.useLineOfSight=Користи LoS проверу
+config.explosionglass.glassDrops=Паднути предмети
+config.explosionglass.glassDropChance=Шанса падања (0.0 - 1.0)
+config.explosionglass.loSIgnoreDistance=LoS удаљеност занемаривања (блокови)
+gui.explosionglass.editblacklist=Црна листа
+gui.explosionglass.editwhitelist=Бела листа
+gui.explosionglass.add=Додај
+gui.explosionglass.removeselected=Уклоњ
+gui.explosionglass.done=Урађено
+gui.explosionglass.cancel=Назад
+gui.explosionglass.blockname=ID:
+gui.explosionglass.itemsinlist=Листа:
+gui.explosionglass.editor=Уредник
+gui.explosionglass.scroll=Скролуј: Точак миша
+gui.explosionglass.reset=Врати подразумеване вредности
+
+item.glass_shard.name=Glass Shard

@@ -1,0 +1,24 @@
+explosionglass.installed_for_more=ExplosionGlass ir instalēts, Lai iegūtu papildinformāciju:
+explosionglass.click=Noklikšķiniet
+config.explosionglass.enabled=Iespējots
+config.explosionglass.glassBreakRadius=Skaņas skaļums
+config.explosionglass.glassBreakRadiusWithLoS=LoS rādiuss
+config.explosionglass.glassBlacklist=Bloki, kuriem NEdrīkst spart, eksplodējot
+config.explosionglass.glassWhitelist=Bloki, kas VIENMĒR spart neatkarīgi no rādiusa vai LoS
+config.explosionglass.useLineOfSight=Izmantojiet LoS pārbaudi
+config.explosionglass.glassDrops=Nolaistie priekšmeti
+config.explosionglass.glassDropChance=Krituma iespējamība (0.0 - 1.0)
+config.explosionglass.loSIgnoreDistance=LoS ignorē attālumu (bloki)
+gui.explosionglass.editblacklist=Melna saraksts
+gui.explosionglass.editwhitelist=Baltā saraksts
+gui.explosionglass.add=Pievienot
+gui.explosionglass.removeselected=Noņemt
+gui.explosionglass.done=Paveikts
+gui.explosionglass.cancel=Atpakaļ
+gui.explosionglass.blockname=ID:
+gui.explosionglass.itemsinlist=Saraksts:
+gui.explosionglass.editor=Redaktors
+gui.explosionglass.scroll=Ritināt: Peles riteņlis
+gui.explosionglass.reset=Atiestatīt noklusējuma iestatījumus
+
+item.glass_shard.name=Glass Shard

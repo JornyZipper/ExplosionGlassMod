@@ -1,0 +1,24 @@
+explosionglass.installed_for_more=ExplosionGlass er installert, For mer info:
+explosionglass.click=Klikk
+config.explosionglass.enabled=Aktivert
+config.explosionglass.glassBreakRadius=Bruddradius
+config.explosionglass.glassBreakRadiusWithLoS=LoS-radius
+config.explosionglass.glassBlacklist=Blokker som IKKE skal knuses når de eksploderer
+config.explosionglass.glassWhitelist=Blokker som ALLTID knuses uavhengig av radius eller LoS
+config.explosionglass.useLineOfSight=Bruk LoS-kontroll
+config.explosionglass.glassDrops=Droppede elementer
+config.explosionglass.glassDropChance=Sjanse for drop (0.0 - 1.0)
+config.explosionglass.loSIgnoreDistance=LoS ignorere avstand (blokker)
+gui.explosionglass.editblacklist=Svart liste
+gui.explosionglass.editwhitelist=Hvit liste
+gui.explosionglass.add=Legg til
+gui.explosionglass.removeselected=Fjern
+gui.explosionglass.done=Ferdig
+gui.explosionglass.cancel=Tilbake
+gui.explosionglass.blockname=ID:
+gui.explosionglass.itemsinlist=Liste:
+gui.explosionglass.editor=Redaktør
+gui.explosionglass.scroll=Scroll: Musehjul
+gui.explosionglass.reset=Tilbakestill standarder
+
+item.glass_shard.name=Glass Shard

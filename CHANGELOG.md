@@ -1,5 +1,56 @@
 # ExplosionGlass Changelog
 
+## [2.1.1] - 2026-03-14
+
+### Fixed
+- Fixed rendering issue where shard entities appeared as white squares - now uses proper glass texture
+- Fixed glass break sound playback using `SoundEvents.BLOCK_GLASS_BREAK`
+- Added visual smoke particles that emit from shards while flying through the air
+- Implemented proper shard-to-item conversion when shards land on the ground
+- Disabled shard spawning for ice blocks (only glass blocks spawn shards)
+- Added damage dealing on shard collision (1 heart damage)
+
+### Technical Details
+- Created `EntityGlassShard` class extending `EntityItem` with custom behavior
+- Shards spawn 10 entities that fly outward with randomized velocity
+- Shards deal 2.0F damage (1 heart) on player collision
+- Shards convert to glass item drops when they stop moving on the ground
+- Smoke particles spawn continuously while shards are in motion
+- Sound plays server-side using vanilla glass break sound
+
+### Files changed
+- `src/main/java/com/coders/explosion/EntityGlassShard.java` (new)
+- `src/main/java/com/coders/explosion/ExplosionEventHandler.java` (shard spawning logic)
+- `src/main/java/com/coders/explosion/ExplosionGlassMod.java` (entity registration)
+- `CHANGELOG.md` (this file)
+
+## [2.1.0] - 2026-03-14
+
+### Changed
+- Refactored shard system to use BWR-Core instead of internal implementation
+- Removed internal shard spawning logic and delegated to BWR-Core ShardAPI
+- Removed CreativeCore dependency as shard handling is now done by BWR-Core
+- Removed obsolete config options: `useCreativeCoreShards` and `explosionFireEffects`
+- Updated dependencies to remove CreativeCore requirement
+
+### Technical Details
+- Calls `ShardAPI.spawnGlassShards(world, pos)` via reflection when glass breaks
+- BWR-Core now spawns 10 glass shards that fly outward and deal 1 heart of damage on impact
+- Improved compatibility with other mods using the same shard system
+- Reduced code duplication by centralizing shard logic in BWR-Core
+
+### Files changed
+- `src/main/java/com/coders/explosion/ExplosionEventHandler.java` (use BWR-Core ShardAPI)
+- `src/main/java/com/coders/explosion/ExplosionGlassMod.java` (removed CreativeCore config, updated dependencies)
+- `src/main/java/com/coders/explosion/ShardSystem.java` (removed - no longer needed)
+- `CHANGELOG.md` (this file)
+
+## [2.0.1] -2026-02-06
+
+Added
+
+
+
 ## [2.0] - 2026-01-06
 
 ### Added
@@ -9,7 +60,6 @@
 - Translations added: French, Polish, Italian, Dutch, Turkish, Arabic.
 
 ### Changed
-- Removed internal `ExplosionCore` implementation; integrate with external core when available.
 - Updated mod version to `2.0` and packaging/cleanup for release.
 
 ### Files changed
