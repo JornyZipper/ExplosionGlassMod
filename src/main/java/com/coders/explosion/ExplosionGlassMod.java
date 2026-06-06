@@ -1,5 +1,7 @@
 package com.coders.explosion;
 
+import bigworld.InstrumentationAPI;
+import com.coders.explosion.instrumentation.ExplosionGlassInstrumentation;
 import net.minecraft.init.Blocks;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -17,8 +19,7 @@ import java.io.File;
 @Mod(
         modid = ExplosionGlassMod.MODID,
         name = ExplosionGlassMod.NAME,
-        version = "2.1",
-        dependencies = "required-after:bwr_core@[0.3.0,)",
+        version = "2.2_LEGACY-last",
         guiFactory = "com.coders.explosion.ConfigGuiFactory"
 )
 public class ExplosionGlassMod {
@@ -31,7 +32,7 @@ public class ExplosionGlassMod {
   
     public static final String MODID = "explglass";
     public static final String NAME = "EXPLGlass";
-        public static final String VERSION = "2.1";
+        public static final String VERSION = "2.2_LEGACY-last";
 
     public static Configuration config;
 
@@ -42,6 +43,7 @@ public class ExplosionGlassMod {
     public static String[] glassWhitelist;
     public static boolean useLineOfSight;
     public static boolean glassDrops;
+    public static boolean showUpdateNotice;
     public static double glassDropChance;       // 0.0 - 1.0
     public static double loSIgnoreDistance;
      // блоков игнорировать при LoS
@@ -53,59 +55,13 @@ public class ExplosionGlassMod {
         config = new Configuration(new File(event.getModConfigurationDirectory(), "explosionglass.cfg"));
         loadConfig();
         MinecraftForge.EVENT_BUS.register(this);
-                // If the external core mod `bwr_core` is present, try to register our instrumentation.
-                try {
-                        if (net.minecraftforge.fml.common.Loader.isModLoaded("bwr_core")) {
-                                System.out.println("[ExplosionGlass] PRE-INIT: BWR-Core found!");
-                                // Try several possible BRCore class names reflectively
-                                String[] candidates = new String[]{
-                                        "bwr.core.BRCore",
-                                        "brcore.BRCore",
-                                        "BRCore",
-                                        "com.bwr.core.BRCore",
-                                        "com.brcore.BRCore"
-                                };
-                                Class<?> brcoreClass = null;
-                                for (String name : candidates) {
-                                        try {
-                                                brcoreClass = Class.forName(name);
-                                                break;
-                                        } catch (ClassNotFoundException ignored) {}
-                                }
-
-                                if (brcoreClass != null) {
-                                        try {
-                                                // Try static registerInstrumentation(Object)
-                                                java.lang.reflect.Method m = brcoreClass.getMethod("registerInstrumentation", Object.class);
-                                                m.invoke(null, new com.coders.explosion.instrumentation.ExplosionGlassInstrumentation());
-                                        } catch (NoSuchMethodException e1) {
-                                                try {
-                                                        // Try static registerInstrumentation(Class)
-                                                        java.lang.reflect.Method m2 = brcoreClass.getMethod("registerInstrumentation", Class.class);
-                                                        m2.invoke(null, com.coders.explosion.instrumentation.ExplosionGlassInstrumentation.class);
-                                                } catch (NoSuchMethodException e2) {
-                                                        try {
-                                                                // Try instance registration via INSTANCE field
-                                                                java.lang.reflect.Field f = brcoreClass.getField("INSTANCE");
-                                                                Object instance = f.get(null);
-                                                                java.lang.reflect.Method m3 = brcoreClass.getMethod("registerInstrumentation", Object.class);
-                                                                m3.invoke(instance, new com.coders.explosion.instrumentation.ExplosionGlassInstrumentation());
-                                                        } catch (Exception ignored) {
-                                                                System.out.println("ExplosionGlass: could not find BRCore.registerInstrumentation signature.");
-                                                        }
-                                                } catch (Exception ex) {
-                                                        System.out.println("ExplosionGlass: error invoking BRCore.registerInstrumentation(Class)");
-                                                }
-                                        } catch (Exception ex) {
-                                                System.out.println("ExplosionGlass: error invoking BRCore.registerInstrumentation(Object)");
-                                        }
-                                } else {
-                                        System.out.println("ExplosionGlass: BRCore class not found despite bwr_core present.");
-                                }
-                        }
-                } catch (Throwable t) {
-                        System.out.println("ExplosionGlass: error while attempting BRCore integration: " + t.getMessage());
-                 }
+                // Register internal BigWorld instrumentation built into the mod.
+        try {
+            bigworld.BWRCore.registerInstrumentation((InstrumentationAPI) new ExplosionGlassInstrumentation());
+            System.out.println("[ExplosionGlass] PRE-INIT: Embedded BigWorld instrumentation registered.");
+        } catch (Throwable t) {
+            System.out.println("[ExplosionGlass] PRE-INIT: Could not register embedded BigWorld instrumentation: " + t.getMessage());
+        }
     }
 
     @Mod.EventHandler
@@ -186,6 +142,13 @@ public class ExplosionGlassMod {
                 "Enable glass drops - false by default"
         );
 
+        showUpdateNotice = config.getBoolean(
+                "showUpdateNotice",
+                "general",
+                true,
+                "Show the last update notice window when the game starts"
+        );
+
         glassDropChance = config.getFloat(
                 "glassDropChance",
                 "general",
@@ -224,6 +187,7 @@ public class ExplosionGlassMod {
         glassWhitelist = new String[0];
         useLineOfSight = true;
         glassDrops = false;
+        showUpdateNotice = true;
         glassDropChance = 1.0;
         loSIgnoreDistance = 10.0;
     }

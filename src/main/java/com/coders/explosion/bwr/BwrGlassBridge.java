@@ -11,8 +11,8 @@ public final class BwrGlassBridge {
     private BwrGlassBridge() {}
 
     /**
-     * Try to invoke BWR-Core glass shard API to handle glass breaking.
-     * NOTE: Currently disabled - BWR-Core API not easily discoverable
+     * Try to invoke BigWorld glass shard API to handle glass breaking.
+     * NOTE: Currently disabled - BigWorld API not easily discoverable
      * Returns false to use fallback destruction
      */
     public static boolean spawnGlassShards(World world, BlockPos pos, IBlockState state, Vec3d explosionPos) {
@@ -20,12 +20,12 @@ public final class BwrGlassBridge {
         return false;
         /*
         try {
-            if (!Loader.isModLoaded("bwr_core")) {
-                System.out.println("[BwrGlassBridge] BWR-Core not found");
+            if (!Loader.isModLoaded("bigworld")) {
+                System.out.println("[BwrGlassBridge] BigWorld not found");
                 return false;
             }
         } catch (Throwable t) {
-            System.out.println("[BwrGlassBridge] Error checking BWR-Core: " + t.getMessage());
+            System.out.println("[BwrGlassBridge] Error checking BigWorld: " + t.getMessage());
             return false;
         }
 
@@ -63,18 +63,18 @@ public final class BwrGlassBridge {
                 System.out.println("[BwrGlassBridge] GlassShards class not found");
             }
 
-            // 2) Try BWRCore static util class WITH AND WITHOUT TEXTURE
+            // 2) Try BigWorldCore static util class WITH AND WITHOUT TEXTURE
             try {
                 Class<?> core = Class.forName("com.coders.bwr.core.BWRCore");
-                System.out.println("[BwrGlassBridge] Found BWRCore class");
+                System.out.println("[BwrGlassBridge] Found BigWorldCore class");
                 
                 // Try WITH texture first
                 for (String mName : new String[]{"spawnGlassShards", "spawnShards"}) {
                     try {
                         java.lang.reflect.Method m = core.getMethod(mName, World.class, BlockPos.class, IBlockState.class, Vec3d.class, ResourceLocation.class);
-                        System.out.println("[BwrGlassBridge] Found BWRCore method with texture: " + mName);
+                        System.out.println("[BwrGlassBridge] Found BigWorldCore method with texture: " + mName);
                         m.invoke(null, world, pos, state, explosionPos, glassTexture);
-                        System.out.println("[BwrGlassBridge] Successfully invoked BWRCore." + mName + " with texture");
+                        System.out.println("[BwrGlassBridge] Successfully invoked BigWorldCore." + mName + " with texture");
                         return true;
                     } catch (NoSuchMethodException ignored) {}
                 }
@@ -83,14 +83,14 @@ public final class BwrGlassBridge {
                 for (String mName : new String[]{"spawnGlassShards", "spawnShards"}) {
                     try {
                         java.lang.reflect.Method m = core.getMethod(mName, World.class, BlockPos.class, IBlockState.class, Vec3d.class);
-                        System.out.println("[BwrGlassBridge] Found BWRCore method without texture: " + mName);
+                        System.out.println("[BwrGlassBridge] Found BigWorldCore method without texture: " + mName);
                         m.invoke(null, world, pos, state, explosionPos);
-                        System.out.println("[BwrGlassBridge] Successfully invoked BWRCore." + mName);
+                        System.out.println("[BwrGlassBridge] Successfully invoked BigWorldCore." + mName);
                         return true;
                     } catch (NoSuchMethodException ignored) {}
                 }
             } catch (ClassNotFoundException ignored) {
-                System.out.println("[BwrGlassBridge] BWRCore class not found");
+                System.out.println("[BwrGlassBridge] BigWorldCore class not found");
             }
 
             // 3) Try provider interface singleton: com.coders.bwr.core.glass.IGlassShardProvider
@@ -154,10 +154,10 @@ public final class BwrGlassBridge {
                 System.out.println("[BwrGlassBridge] IGlassShardProvider interface not found");
             }
 
-            // 4) Try generic provider on BWRCore: getGlassShardProvider()
+            // 4) Try generic provider on BigWorldCore: getGlassShardProvider()
             try {
                 Class<?> core = Class.forName("com.coders.bwr.core.BWRCore");
-                System.out.println("[BwrGlassBridge] Trying BWRCore.getGlassShardProvider()");
+                System.out.println("[BwrGlassBridge] Trying BigWorldCore.getGlassShardProvider()");
                 try {
                     java.lang.reflect.Method get = core.getMethod("getGlassShardProvider");
                     Object provider = get.invoke(null);
@@ -186,11 +186,11 @@ public final class BwrGlassBridge {
                     System.out.println("[BwrGlassBridge] getGlassShardProvider() method not found");
                 }
             } catch (ClassNotFoundException ignored) {
-                System.out.println("[BwrGlassBridge] BWRCore not found in second attempt");
+                System.out.println("[BwrGlassBridge] BigWorldCore not found in second attempt");
             }
 
         } catch (Throwable t) {
-            System.out.println("BwrGlassBridge: error invoking BWR-Core glass API: " + t.getMessage());
+            System.out.println("BwrGlassBridge: error invoking BigWorld glass API: " + t.getMessage());
             t.printStackTrace();
             return false;
         }

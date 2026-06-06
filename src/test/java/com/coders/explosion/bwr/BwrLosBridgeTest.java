@@ -11,7 +11,7 @@ public class BwrLosBridgeTest {
 
     @Test
     public void bridgeReturnsBooleanWhenProviderAbsent() {
-        // Without BWR-Core present, canSee should return false safely
+        // Without BigWorld present, canSee should return false safely
         boolean result = BwrLosBridge.canSee(null, new Vec3d(0,0,0), new BlockPos(0,0,0));
         assertFalse(result);
     }

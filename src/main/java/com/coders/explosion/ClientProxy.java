@@ -2,6 +2,7 @@ package com.coders.explosion;
 
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.sound.PlaySoundEvent;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -16,6 +17,7 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void registerRenderers() {
         // No entities to render
+        MinecraftForge.EVENT_BUS.register(new UpdateNoticeHandler());
     }
 
     @SubscribeEvent

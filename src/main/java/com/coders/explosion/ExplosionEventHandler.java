@@ -102,7 +102,7 @@ public class ExplosionEventHandler {
                 continue;
             }
 
-            // Если LoS включен - проверяем видимость через BWR-Core ILOS provider
+            // Если LoS включен - проверяем видимость через BigWorld ILOS provider
             if (ExplosionGlassMod.useLineOfSight && distance <= radiusLoS) {
                 if (com.coders.explosion.bwr.BwrLosBridge.canSee(world, explosionPos, pos)) {
                     breakGlass(world, pos, state, explosionPos, isGlass ? "glass" : "ice", explosionSize);
@@ -112,7 +112,7 @@ public class ExplosionEventHandler {
     }
 
     // Проверка прямой видимости - проверяем есть ли непрозрачные блоки в пути
-    // LoS implementation removed; BWR-Core ILOS provider is used instead via BwrLosBridge.
+    // LoS implementation removed; BigWorld ILOS provider is used instead via BwrLosBridge.
 
     // Определить тип блока (стекло или лед) на основе состояния блока
     private String determineBlockType(IBlockState state) {
