@@ -20,5 +20,7 @@ gui.explosionglass.itemsinlist=List:
 gui.explosionglass.editor=Editor
 gui.explosionglass.scroll=Scroll: Mouse Wheel
 gui.explosionglass.reset=Reset Defaults
+gui.explosionglass.mainmenu=Return to Main Menu
+gui.explosionglass.dontshow=Don't show again
 
 item.glass_shard.name=Glass Shard

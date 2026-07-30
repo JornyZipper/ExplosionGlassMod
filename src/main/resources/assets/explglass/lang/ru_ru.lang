@@ -20,5 +20,7 @@ gui.explosionglass.itemsinlist=Список:
 gui.explosionglass.editor=Редактор
 gui.explosionglass.scroll=Прокрутка: Колесо мыши
 gui.explosionglass.reset=Сбросить настройки
+gui.explosionglass.mainmenu=Вернуться в главное меню
+gui.explosionglass.dontshow=Больше не показывать
 item.glass_shard.name=Осколок Стекла
 item.glass_shard.name=Glass Shard

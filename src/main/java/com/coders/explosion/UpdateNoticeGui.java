@@ -4,6 +4,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.resources.I18n;
 import java.io.IOException;
 
 public class UpdateNoticeGui extends GuiScreen {
@@ -24,13 +25,11 @@ public class UpdateNoticeGui extends GuiScreen {
         int centerX = this.width / 2;
         int startY = this.height / 2;
 
-        backButton = new GuiButton(100, centerX - buttonWidth / 2, startY, buttonWidth, buttonHeight, "Return to Main Menu");
+        backButton = new GuiButton(100, centerX - buttonWidth / 2, startY, buttonWidth, buttonHeight, I18n.format("gui.explosionglass.mainmenu"));
         this.buttonList.add(backButton);
 
-        if (!bwrDetected) {
-            noShowButton = new GuiButton(101, centerX - buttonWidth / 2, startY + 26, buttonWidth, buttonHeight, "Don't show again and return");
-            this.buttonList.add(noShowButton);
-        }
+        noShowButton = new GuiButton(101, centerX - buttonWidth / 2, startY + 26, buttonWidth, buttonHeight, I18n.format("gui.explosionglass.dontshow"));
+        this.buttonList.add(noShowButton);
     }
 
     @Override

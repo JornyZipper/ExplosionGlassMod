@@ -14,12 +14,23 @@ import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.common.MinecraftForge;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.Enumeration;
+import java.util.Locale;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
+import net.minecraftforge.fml.common.Loader;
 
 @Mod(
         modid = ExplosionGlassMod.MODID,
         name = ExplosionGlassMod.NAME,
-        version = "2.2_LEGACY-last",
+        version = "2.2.1",
         guiFactory = "com.coders.explosion.ConfigGuiFactory"
 )
 public class ExplosionGlassMod {
@@ -32,7 +43,7 @@ public class ExplosionGlassMod {
   
     public static final String MODID = "explglass";
     public static final String NAME = "EXPLGlass";
-        public static final String VERSION = "2.2_LEGACY-last";
+        public static final String VERSION = "2.2.2";
 
     public static Configuration config;
 
@@ -44,6 +55,7 @@ public class ExplosionGlassMod {
     public static boolean useLineOfSight;
     public static boolean glassDrops;
     public static boolean showUpdateNotice;
+    public static boolean BWR_PRESENT;
     public static double glassDropChance;       // 0.0 - 1.0
     public static double loSIgnoreDistance;
      // блоков игнорировать при LoS
@@ -54,6 +66,7 @@ public class ExplosionGlassMod {
         System.out.println("[ExplosionGlass] PRE-INIT: Custom glass & ice sounds applied!");
         config = new Configuration(new File(event.getModConfigurationDirectory(), "explosionglass.cfg"));
         loadConfig();
+        BWR_PRESENT = detectBwrCore();
         MinecraftForge.EVENT_BUS.register(this);
                 // Register internal BigWorld instrumentation built into the mod.
         try {
@@ -84,6 +97,143 @@ public class ExplosionGlassMod {
 
                 // Setup custom sounds for glass and ice
                 GlassSoundBlocker.setupCustomGlassSounds();
+    }
+
+    public static boolean isBigWorldDetected() {
+        return BWR_PRESENT;
+    }
+
+    private static boolean detectBwrCore() {
+        boolean present = false;
+        if (Loader.isModLoaded("bwr_core") || Loader.isModLoaded("bwr-core") || Loader.isModLoaded("bwr core")) {
+            System.out.println("[ExplosionGlass] BWR core detected via Forge Loader: bwr_core / bwr-core");
+            present = true;
+        } else {
+            File modsDir = new File(System.getProperty("user.dir"), "mods");
+            if (!modsDir.exists() || !modsDir.isDirectory()) {
+                System.out.println("[ExplosionGlass] BWR core not detected: mods folder not found");
+                present = false;
+            } else {
+                File[] entries = modsDir.listFiles();
+                if (entries == null) {
+                    System.out.println("[ExplosionGlass] BWR core not detected: unable to list mods folder");
+                    present = false;
+                } else {
+                    for (File entry : entries) {
+                        if (entry.isDirectory()) {
+                            if (isBwrCoreFolder(entry)) {
+                                System.out.println("[ExplosionGlass] BWR core detected in mods folder: " + entry.getAbsolutePath());
+                                present = true;
+                                break;
+                            }
+                            continue;
+                        }
+
+                        if (!entry.isFile()) {
+                            continue;
+                        }
+
+                        String lowerName = entry.getName().toLowerCase(Locale.ROOT);
+                        if (!lowerName.endsWith(".jar") && !lowerName.endsWith(".zip")) {
+                            continue;
+                        }
+
+                        if (isBwrCoreArchive(entry)) {
+                            System.out.println("[ExplosionGlass] BWR core detected in mods archive: " + entry.getAbsolutePath());
+                            present = true;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        if (!present) {
+            System.out.println("[ExplosionGlass] BWR core not detected in mods folder");
+        }
+
+        return present;
+    }
+
+    private static boolean isBwrCoreFolder(File folder) {
+        String folderName = folder.getName().toLowerCase(Locale.ROOT);
+        return folderName.contains("bwr-core") || folderName.contains("bwr_core") || folderName.contains("bwr core");
+    }
+
+    private static boolean isBwrCoreArchive(File archiveFile) {
+        if (isCurrentModArchive(archiveFile)) {
+            return false;
+        }
+
+        String fileName = archiveFile.getName().toLowerCase(Locale.ROOT);
+        if (fileName.contains("bwr-core") || fileName.contains("bwr_core") || fileName.contains("bwr core")) {
+            return true;
+        }
+
+        try (ZipFile zipFile = new ZipFile(archiveFile)) {
+            Enumeration<? extends ZipEntry> entries = zipFile.entries();
+            while (entries.hasMoreElements()) {
+                ZipEntry entry = entries.nextElement();
+                String entryName = entry.getName().toLowerCase(Locale.ROOT);
+                if (entryName.contains("bwr_core/") || entryName.contains("bwr-core/") || entryName.contains("bwr core/")) {
+                    return true;
+                }
+
+                if (!entryName.equals("mcmod.info") && !entryName.equals("meta-inf/manifest.mf")) {
+                    continue;
+                }
+
+                String content = readZipEntry(zipFile, entry);
+                String lowerContent = content.toLowerCase(Locale.ROOT);
+                if ((lowerContent.contains("modid") || lowerContent.contains("name"))
+                        && (lowerContent.contains("bwr_core") || lowerContent.contains("bwr-core") || lowerContent.contains("bwr core"))) {
+                    return true;
+                }
+            }
+        } catch (IOException ignored) {
+            // Ignore unreadable archives and continue scanning.
+        }
+
+        return false;
+    }
+
+    private static boolean isCurrentModArchive(File archiveFile) {
+        try {
+            URL codeSource = ExplosionGlassMod.class.getProtectionDomain().getCodeSource().getLocation();
+            if (codeSource == null) {
+                return false;
+            }
+
+            String externalForm = codeSource.toExternalForm();
+            if (externalForm.startsWith("jar:")) {
+                int separator = externalForm.indexOf("!/");
+                if (separator >= 0) {
+                    externalForm = externalForm.substring(4, separator);
+                }
+            }
+
+            if (!externalForm.startsWith("file:")) {
+                return false;
+            }
+
+            File currentModJar = new File(new URI(externalForm)).getCanonicalFile();
+            File candidate = archiveFile.getCanonicalFile();
+            return currentModJar.equals(candidate);
+        } catch (IOException | URISyntaxException ignored) {
+            return false;
+        }
+    }
+
+    private static String readZipEntry(ZipFile zipFile, ZipEntry entry) throws IOException {
+        try (InputStream inputStream = zipFile.getInputStream(entry);
+             ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
+            byte[] buffer = new byte[4096];
+            int read;
+            while ((read = inputStream.read(buffer)) != -1) {
+                outputStream.write(buffer, 0, read);
+            }
+            return outputStream.toString("UTF-8");
+        }
     }
 
     public static void loadConfig() {
