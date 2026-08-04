@@ -99,10 +99,10 @@ public class ExplosionGlassConfigGui extends GuiScreen {
             ExplosionGlassMod.useLineOfSight = !ExplosionGlassMod.useLineOfSight;
         } else if (button.id == 104) {
             // Open blacklist editor
-            this.mc.displayGuiScreen(new ListEditorGui(this, "Blacklist", ExplosionGlassMod.glassBlacklist, true));
+            this.mc.displayGuiScreen(new ListEditorGui(this, "Blacklist", ExplosionGlassMod.BLACKLIST, true));
         } else if (button.id == 105) {
             // Open whitelist editor
-            this.mc.displayGuiScreen(new ListEditorGui(this, "Whitelist", ExplosionGlassMod.glassWhitelist, false));
+            this.mc.displayGuiScreen(new ListEditorGui(this, "Whitelist", ExplosionGlassMod.WHITELIST, false));
         } else if (button.id == 200) {
             // Save
             try {

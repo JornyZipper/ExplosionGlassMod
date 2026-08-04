@@ -21,6 +21,10 @@ import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.Locale;
 import java.util.zip.ZipEntry;
@@ -30,7 +34,7 @@ import net.minecraftforge.fml.common.Loader;
 @Mod(
         modid = ExplosionGlassMod.MODID,
         name = ExplosionGlassMod.NAME,
-        version = "2.2.1",
+        version = "2.2.2.1",
         guiFactory = "com.coders.explosion.ConfigGuiFactory"
 )
 public class ExplosionGlassMod {
@@ -43,15 +47,15 @@ public class ExplosionGlassMod {
   
     public static final String MODID = "explglass";
     public static final String NAME = "EXPLGlass";
-        public static final String VERSION = "2.2.2";
+        public static final String VERSION = "2.2.2.1";
 
     public static Configuration config;
 
     public static boolean Mod;
     public static int glassBreakRadius;          // радиус без LoS
     public static int glassBreakRadiusWithLoS;  // радиус с LoS
-    public static String[] glassBlacklist;
-    public static String[] glassWhitelist;
+    public static Set<String> BLACKLIST = new HashSet<>();
+    public static Set<String> WHITELIST = new HashSet<>();
     public static boolean useLineOfSight;
     public static boolean glassDrops;
     public static boolean showUpdateNotice;
@@ -264,19 +268,23 @@ public class ExplosionGlassMod {
                 "Explosion radius with LoS check"
         );
 
-        glassBlacklist = config.getStringList(
-                "glassBlacklist",
-                "general",
-                new String[0],
-                "Blocks that should NOT break when exploded"
-        );
+        BLACKLIST = new HashSet<>(Arrays.asList(
+                config.getStringList(
+                        "glassBlackList",
+                        "general",
+                        new String[0],
+                        "Block that should NOT break when exploded"
+                )
+        ));
 
-        glassWhitelist = config.getStringList(
-                "glassWhitelist",
-                "general",
-                new String[0],
-                "Blocks that ALWAYS break regardless of radius or LoS"
-        );
+        WHITELIST = new HashSet<>(Arrays.asList(
+                config.getStringList(
+                        "glassWhitelist",
+                        "general",
+                        new String[0],
+                        "Blocks that ALWAYS break regardless of radius or LoS"
+                )
+        ));
 
         useLineOfSight = config.getBoolean(
                 "useLineOfSight",
@@ -333,8 +341,10 @@ public class ExplosionGlassMod {
         Mod = true;
         glassBreakRadius = 20;
         glassBreakRadiusWithLoS = 10;
-        glassBlacklist = new String[0];
-        glassWhitelist = new String[0];
+
+        BLACKLIST = new HashSet<>();
+        WHITELIST = new HashSet<>();
+
         useLineOfSight = true;
         glassDrops = false;
         showUpdateNotice = true;

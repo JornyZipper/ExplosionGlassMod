@@ -69,8 +69,8 @@ public class ExplosionEventHandler {
             // Пропускаем пустые блоки и воздух
             if (world.isAirBlock(pos)) continue;
 
-            boolean isBlacklisted = Arrays.asList(ExplosionGlassMod.glassBlacklist).contains(blockName);
-            boolean isWhitelisted = Arrays.asList(ExplosionGlassMod.glassWhitelist).contains(blockName);
+            boolean isBlacklisted = ExplosionGlassMod.BLACKLIST.contains(blockName);
+            boolean isWhitelisted = ExplosionGlassMod.WHITELIST.contains(blockName);
 
             // Если блок в blacklist — точно не ломаем
             if (isBlacklisted) continue;

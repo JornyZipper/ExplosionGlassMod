@@ -116,7 +116,8 @@ public final class LOSManager implements ILOSProvider {
         if ((x == from.getX() && y == from.getY() && z == from.getZ()) ||
             (x == to.getX() && y == to.getY() && z == to.getZ())) return false;
 
-        BlockPos pos = new BlockPos(x, y, z);
+        BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
+        pos.setPos(x, y, z);
         IBlockState state = world.getBlockState(pos);
         boolean air = world.isAirBlock(pos);
         if (air) return false;
